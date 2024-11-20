@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block 'content' %}
+
+{% load static %}
+<div class="container">
+  <div class="row">
+        <div class="col-md-9">
+            <h5 class="bg-secondary-subtle"><strong>Cart Details</strong></h5>
+            <div class="row">
+                {% for product in products %}
+                <div class="col-md-4">
+                    <img src="{{product.pid.image.url}}" class="img-fluid" alt="">
+                </div>
+                <div class="col-md-8">
+                    <p><strong>Name: {{product.pid.name}}</strong></p>
+                    <p><strong>price:{{product.pid.price}}</strong></p>
+                    <p><strong>category: watch:</strong></p>
+                    <p><strong> Details :{{product.pid.pdetails}}</strong></p>
+                    <p><strong>quantity</strong></p>
+                    <a href="/updateqty/0/{{product.id}}"><button class=" btn btn-danger">-</button></a>
+                    <input type="number" value="{{product.quantity}}">
+                    <a href="/updateqty/1/{{product.id}}"><button class=" btn btn-success">+</button></a>
+                    <a href="/remove/{{product.id}}"><button class="btn btn-danger">Remove</button></a>
+
+
+                </div>
+            {% endfor %}    
+            </div>
+        </div>
+        <div class="col-md-3">
+            
+                <h5 class="bg-secondary-subtle"><strong> Total Amount</strong></h5>
+                <p><strong>total({{np}} items):rs.{{price}}</strong></p>
+                <a href="/placeorder"><button class="btn btn-success">Place Order</button></a>
+               
+        
+        </div>
+
+
+    </div>
+
+</div>
+    
+
+{% endblock 'content' %}    
